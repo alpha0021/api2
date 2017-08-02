@@ -28,7 +28,11 @@ res.send({type:"PUT"});
 
 //delete ninja from database
 router.delete("/ninjas/:id",function(req,res,next){
-res.send({type:"DELETE"});
+	//console.log(req.params.id);
+	Ninja.findByIdAndRemove({_id:req.params.id}).then(function(ninja){
+		res.send(ninja);
+	});
+	
 });
 
 
